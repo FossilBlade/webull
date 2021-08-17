@@ -20,8 +20,13 @@ from . import endpoints
 
 class webull:
 
-    def __init__(self):
+    def __init__(self,device_id=None):
         self._session = requests.session()
+
+
+        self._did = device_id if device_id else self._get_did()
+
+
         self._headers = {
             'Accept': '*/*',
             'Accept-Encoding': 'gzip, deflate',
@@ -30,7 +35,7 @@ class webull:
             'ver': '3.22.20',
             'User-Agent': '*',
             'lzone': 'dc_core_r001',
-            'did': self._get_did(),
+            'did': self._did,
         }
 
         #endpoints
@@ -45,7 +50,7 @@ class webull:
         self._uuid = ''
 
         #miscellaenous
-        self._did = self._get_did()
+#         self._did = self._get_did()
         self._region_code = 6
         self.zone_var = 'dc_core_r001'
 
