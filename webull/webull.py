@@ -1221,8 +1221,8 @@ class webull:
 ''' Paper support '''
 class paper_webull(webull):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self,device_id=None):
+        super().__init__(device_id=device_id)
 
     def get_account(self):
         ''' Get important details of paper account '''
